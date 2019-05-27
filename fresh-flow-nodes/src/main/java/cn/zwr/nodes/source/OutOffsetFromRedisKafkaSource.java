@@ -11,6 +11,7 @@ import org.apache.kafka.common.TopicPartition;
 import org.apache.spark.SparkConf;
 import org.apache.spark.streaming.api.java.JavaDStream;
 import org.apache.spark.streaming.api.java.JavaInputDStream;
+import org.apache.spark.streaming.api.java.JavaStreamingContext;
 import org.apache.spark.streaming.kafka010.*;
 import redis.clients.jedis.Jedis;
 
@@ -34,9 +35,9 @@ public class OutOffsetFromRedisKafkaSource extends KafkaSource{
     @Getter
     private String appName;
 
-    public OutOffsetFromRedisKafkaSource(SparkConf conf) {
-        super(conf);
-        this.appName = conf.get("appName");
+    public OutOffsetFromRedisKafkaSource(JavaStreamingContext context) {
+        super(context);
+        this.appName = context.sparkContext().getConf().get("appName");
     }
 
     /**

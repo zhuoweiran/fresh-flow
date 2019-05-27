@@ -2,13 +2,8 @@ package cn.zwr.nodes.source;
 
 
 import cn.zwr.core.node.UnboundSource;
-import lombok.Getter;
-import lombok.Setter;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.serialization.StringDeserializer;
-import org.apache.spark.SparkConf;
-import org.apache.spark.api.java.JavaSparkContext;
-import org.apache.spark.streaming.Durations;
 import org.apache.spark.streaming.api.java.JavaDStream;
 import org.apache.spark.streaming.api.java.JavaInputDStream;
 import org.apache.spark.streaming.api.java.JavaStreamingContext;
@@ -25,7 +20,7 @@ import java.util.Map;
  * <p>读取Kafka的数据，只留value，返回</p>
  *
  * @author Alex Han
- * @version 1.0
+ * @version 1.1
  */
 public class KafkaSource extends UnboundSource<String> {
     private static final long serialVersionUID = -189514862188250323L;
@@ -39,9 +34,6 @@ public class KafkaSource extends UnboundSource<String> {
     private final String VALUE_DESERIALIZER = "value.deserializer";
     public final String MAX_PARTITION_FETCH_BYTES = "max.partition.fetch.bytes";
     public final String WINDOW_SECONDS = "window.seconds.size";
-    @Getter@Setter
-    private transient SparkConf conf;
-    private transient JavaStreamingContext javaStreamingContext;
 
     @Override
     public JavaDStream<String> read() {
@@ -62,8 +54,8 @@ public class KafkaSource extends UnboundSource<String> {
         return result;
     }
 
-    public KafkaSource(SparkConf conf) {
-        this.conf = conf;
+    public KafkaSource(JavaStreamingContext context) {
+        super(context);
 
     }
     public JavaInputDStream<ConsumerRecord<String, String>> step1(
@@ -83,13 +75,4 @@ public class KafkaSource extends UnboundSource<String> {
                 .map(tuple2 -> tuple2._2);
     }
 
-    public JavaStreamingContext getJavaStreamingContext() {
-        if(javaStreamingContext == null){
-            javaStreamingContext = new JavaStreamingContext(
-                    new JavaSparkContext(conf),
-                    Durations.seconds(getOptionAsInt(WINDOW_SECONDS,2))
-            );
-        }
-        return javaStreamingContext;
-    }
 }

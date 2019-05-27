@@ -45,7 +45,7 @@ public class ESSchemaSource<T> extends ESSource<T> {
                         field = field.substring(field.indexOf("set") + 3);
                         field = field.toLowerCase().charAt(0) + field.substring(1);
                         if (map.containsKey(field)) {
-                            method.invoke(t1, map.get(field).toString());
+                            method.invoke(t1, map.get(field) == null ? null : map.get(field));
                         }
                     }
                 }

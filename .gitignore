@@ -80,3 +80,6 @@ fabric.properties
 # iml file
 *.iml
 
+# backup file
+pom.xml.versionsBackup
+

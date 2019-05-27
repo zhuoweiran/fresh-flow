@@ -1,6 +1,6 @@
 package cn.zwr.nodes.sink;
 
-import cn.zwr.nodes.sink.common.ESSchemaSink;
+import cn.zwr.nodes.sink.common.UnboundESSchemaSink;
 import cn.zwr.pojo.common.EventCommon;
 import cn.zwr.pojo.common.EventCommonDataDetail;
 import com.google.common.collect.Maps;
@@ -12,7 +12,7 @@ import org.elasticsearch.spark.streaming.api.java.JavaEsSparkStreaming;
 import java.util.Map;
 
 /**
- * <title>EventESSchemaSink</title>
+ * <title>EventUnboundESSchemaSink</title>
  * <p>EventCommon存入ES Sink</p>
  *
  * @param <T>
@@ -22,18 +22,7 @@ import java.util.Map;
  * @version 1.0
  */
 @NoArgsConstructor
-public class EventESSchemaSink<T extends EventCommon, D extends EventCommonDataDetail> extends ESSchemaSink<T> {
-    private static final long serialVersionUID = 4174245239264702412L;
-    public final String ES_INDEX_AUTO_CREATE = "es.index.auto.create";
-    public final String ES_NODES = "es.nodes";
-    public final String ES_PORT = "es.port";
-
-    public final String ES_RESOURCE = "es.resource.write";
-    public final String ES_TYPE = "es.type";
-    public final String ES_MAPPING_DATE_RICH = "es.mapping.date.rich";
-    public final String ES_NODES_WAN_ONLY = "es.nodes.wan.only";
-    public final String ES_BATCH_WRITE_RETRY_COUNT = "es.batch.write.retry.count";
-    public final String ES_BATCH_WRITE_RETRY_WAIT = "es.batch.write.retry.wait";
+public class EventUnboundESSchemaSink<T extends EventCommon, D extends EventCommonDataDetail> extends UnboundESSchemaSink<T> {
 
     @Override
     public void write(JavaDStream<T> data) {

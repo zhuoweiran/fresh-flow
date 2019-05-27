@@ -27,7 +27,7 @@ public class BaseClass {
     }
     public String getOption(String name, String defautValue){
         String optStr = getOption(name);
-        if(name == null){
+        if(optStr == null){
             optStr = defautValue;
         }
         return optStr;

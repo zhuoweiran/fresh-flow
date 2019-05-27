@@ -1,5 +1,9 @@
 package cn.zwr.core.node;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 
 /**
@@ -9,8 +13,12 @@ import org.apache.spark.api.java.JavaRDD;
  * @param <T>
  *
  * @author Alex Han
- * @version 1.0
+ * @version 1.1
  */
+@AllArgsConstructor
 public abstract class BoundSource<T> extends BaseNode{
+    @Getter
+    @Setter
+    protected transient SparkConf conf;
     public abstract JavaRDD<T> read();
 }

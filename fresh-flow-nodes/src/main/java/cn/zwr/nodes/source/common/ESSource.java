@@ -1,8 +1,7 @@
 package cn.zwr.nodes.source.common;
 
 import cn.zwr.core.node.BoundSource;
-import lombok.Getter;
-import lombok.Setter;
+import cn.zwr.nodes.common.ESConfigure;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaSparkContext;
@@ -17,25 +16,14 @@ import java.util.Map;
  * @param <T>
  *
  * @author Alex Han
- * @version 1.0
+ * @version 1.1
  */
-public abstract class ESSource<T> extends BoundSource<T> {
-    public final String CLUSTER_NAME = "cluster.name";
-    public final String ES_NODES = "es.nodes";
-    public final String ES_PORT = "es.port";
-    public final String ES_INDEX_READ_MISSING_AS_EMPTY = "es.index.read.missing.as.empty";
-    public final String ES_NODES_WAN_ONLY = "es.nodes.wan.only";
-    public final String ES_SCROLL_SIZE = "es.scroll.size";
-    public final String ES_RESOURCE = "es.resource.read";
-    public final String ES_TYPE = "es.type";
+public abstract class ESSource<T> extends BoundSource<T> implements ESConfigure {
     public final String QUERY = "query";
 
-    @Getter
-    @Setter
-    private transient SparkConf conf;
 
     public ESSource(SparkConf conf) {
-        this.conf = conf;
+        super(conf);
     }
 
     public JavaPairRDD<String, Map<String, Object>> before(){
