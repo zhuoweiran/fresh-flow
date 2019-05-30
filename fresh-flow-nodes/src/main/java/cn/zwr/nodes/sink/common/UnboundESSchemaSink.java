@@ -1,7 +1,7 @@
 package cn.zwr.nodes.sink.common;
 
 import cn.zwr.core.node.UnboundSink;
-import cn.zwr.nodes.common.ESConfigure;
+import cn.zwr.nodes.common.ESConfigureAble;
 
 /**
  * <title>UnboundESSchemaSink</title>
@@ -12,7 +12,7 @@ import cn.zwr.nodes.common.ESConfigure;
  * @author Alex Han
  * @version 1.0
  */
-public abstract class UnboundESSchemaSink<T> extends UnboundSink<T> implements ESConfigure {
+public abstract class UnboundESSchemaSink<T> extends UnboundSink<T> implements ESConfigureAble {
     private static final long serialVersionUID = -3476067168544969723L;
 
 }

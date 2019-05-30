@@ -2,7 +2,7 @@ package cn.zwr.nodes.sink;
 
 import cn.zwr.core.node.BoundSink;
 import cn.zwr.core.pojo.Mapable;
-import cn.zwr.nodes.common.ESConfigure;
+import cn.zwr.nodes.common.ESConfigureAble;
 import com.google.common.collect.Maps;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.function.Function;
@@ -10,7 +10,7 @@ import org.elasticsearch.spark.rdd.api.java.JavaEsSpark;
 
 import java.util.Map;
 
-public class ESSchemaSink<T extends Mapable> extends BoundSink<T> implements ESConfigure {
+public class ESSchemaSink<T extends Mapable> extends BoundSink<T> implements ESConfigureAble {
 
     @Override
     public void wirte(JavaRDD<T> rdd) {

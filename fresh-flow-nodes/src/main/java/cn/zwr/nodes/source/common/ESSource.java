@@ -1,7 +1,7 @@
 package cn.zwr.nodes.source.common;
 
 import cn.zwr.core.node.BoundSource;
-import cn.zwr.nodes.common.ESConfigure;
+import cn.zwr.nodes.common.ESConfigureAble;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaSparkContext;
@@ -18,7 +18,7 @@ import java.util.Map;
  * @author Alex Han
  * @version 1.1
  */
-public abstract class ESSource<T> extends BoundSource<T> implements ESConfigure {
+public abstract class ESSource<T> extends BoundSource<T> implements ESConfigureAble {
     public final String QUERY = "query";
 
 

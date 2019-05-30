@@ -1,6 +1,6 @@
 package cn.zwr.nodes.common;
 
-public interface ESConfigure {
+public interface ESConfigureAble {
     String CLUSTER_NAME = "cluster.name";
     String ES_INDEX_AUTO_CREATE = "es.index.auto.create";
     String ES_NODES = "es.nodes";
