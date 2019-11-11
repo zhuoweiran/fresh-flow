@@ -29,7 +29,6 @@
         <guava.version>15.0</guava.version>
         <scala.version>2.11</scala.version>
         <commons.lang.version>2.6</commons.lang.version>
-        <guava.version>18.0</guava.version>
         <lombok.version>1.16.20</lombok.version>
     </properties>
 
@@ -109,7 +108,7 @@
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>18.0</version>
+                <version>${guava.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

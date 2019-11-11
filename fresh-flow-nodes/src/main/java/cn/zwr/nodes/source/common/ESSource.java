@@ -35,7 +35,6 @@ public abstract class ESSource<T> extends BoundSource<T> {
     private transient SparkConf conf;
 
     public ESSource(SparkConf conf) {
-        super();
         this.conf = conf;
     }
 
