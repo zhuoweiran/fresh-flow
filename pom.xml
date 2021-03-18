@@ -19,7 +19,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
         <spark.version>2.2.0</spark.version>
-        <es.version>6.2.1</es.version>
+        <es.version>7.11.2</es.version>
         <jdk.version>1.8</jdk.version>
         <jedis.version>2.9.0</jedis.version>
         <jodis.version>0.5.0</jodis.version>
